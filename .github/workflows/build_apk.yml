@@ -23,7 +23,7 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git zip unzip openjdk-11-jdk python3-pip autoconf automake libtool libtool-bin pkg-config zlib1g-dev cmake libffi-dev libssl-dev build-essential
+        sudo apt-get install -y git zip unzip openjdk-11-jdk python3-pip autoconf automake libtool libtool-bin libltdl-dev pkg-config zlib1g-dev cmake libffi-dev libssl-dev build-essential
         
     - name: Install Buildozer and dependencies
       run: |
@@ -31,9 +31,13 @@ jobs:
         export PATH=$PATH:~/.local/bin
         
     - name: Build APK with Buildozer
-      timeout-minutes: 60
+      timeout-minutes: 90
+      env:
+        P4A_RELEASE_BUILD: 1
       run: |
         export PATH=$PATH:~/.local/bin
+        # Fix for libtool/libffi issues on newer autotools
+        export ACLOCAL_PATH=/usr/share/aclocal:$ACLOCAL_PATH
         # Set log level to 2 for detailed output
         buildozer android debug log_level=2
         
