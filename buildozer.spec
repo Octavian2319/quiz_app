@@ -12,6 +12,15 @@ package.domain = com.quizapp
 # (str) Source code where the main.py live
 source.dir = .
 
+# (str) Presplash of the application
+#presplash.filename = %(source.dir)s/data/presplash.png
+
+# (str) Icon of the application
+#icon.filename = %(source.dir)s/data/icon.png
+
+# (str) Orientation mode (one of landscape, sensorLandscape, portrait or all)
+orientation = portrait
+
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas,txt
 
@@ -36,7 +45,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,pyjnius,android
+requirements = python3,kivy
 
 # (str) Custom source folders for requirements
 # requirements.source.kivy = ../../kivy
