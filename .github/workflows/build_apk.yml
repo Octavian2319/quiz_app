@@ -28,6 +28,8 @@ jobs:
     - name: Install Buildozer and dependencies
       run: |
         pip3 install --user buildozer Cython
+        # Pin python-for-android to fix Python 3.11 long issue
+        pip3 install --user python-for-android==2023.08.24
         export PATH=$PATH:~/.local/bin
         
     - name: Build APK with Buildozer
