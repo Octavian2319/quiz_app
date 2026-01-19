@@ -254,6 +254,9 @@ android.accept_sdk_license = True
 # (str) python-for-android branch to use, defaults to master
 #p4a.branch = master
 
+# Fix for Python 3.11 long issue - use older p4a version that builds Python 3.9
+p4a.branch = 2023.08.24
+
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
 #p4a.commit = HEAD
 
