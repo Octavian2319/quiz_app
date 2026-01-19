@@ -31,9 +31,11 @@ jobs:
         export PATH=$PATH:~/.local/bin
         
     - name: Build APK with Buildozer
+      timeout-minutes: 60
       run: |
         export PATH=$PATH:~/.local/bin
-        buildozer android debug
+        # Set log level to 2 for detailed output
+        buildozer android debug log_level=2
         
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
