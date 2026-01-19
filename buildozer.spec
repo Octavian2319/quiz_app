@@ -254,12 +254,12 @@ android.accept_sdk_license = True
 # (str) python-for-android branch to use, defaults to master
 #p4a.branch = master
 
-# Fix for Python 3.11 long issue - use stable branch
-# Leave as master to use stable version
-#p4a.branch = master
+# Fix for Python 3.11 long issue - use older tag that builds Python 3.9
+# Use tag 2022.12.20 which builds Python 3.9/3.10 instead of 3.11
+p4a.branch = 2022.12.20
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
-# Let buildozer use default - it should handle Python version correctly
+# Use default commit from tag
 #p4a.commit = HEAD
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
