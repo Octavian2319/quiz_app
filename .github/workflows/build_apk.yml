@@ -28,8 +28,6 @@ jobs:
     - name: Install Buildozer and dependencies
       run: |
         pip3 install --user buildozer Cython
-        # Install older python-for-android to avoid Python 3.11 long issue
-        pip3 install --user python-for-android==2022.12.20
         export PATH=$PATH:~/.local/bin
         
     - name: Build APK with Buildozer
@@ -40,8 +38,8 @@ jobs:
         export PATH=$PATH:~/.local/bin
         # Fix for libtool/libffi issues on newer autotools
         export ACLOCAL_PATH=/usr/share/aclocal:$ACLOCAL_PATH
-        # Set log level to 2 for detailed output
-        buildozer android debug log_level=2
+        # Set log level to 2 for detailed output and capture full error
+        buildozer android debug log_level=2 2>&1 | tee buildozer.log || (echo "Build failed. Last 100 lines:" && tail -100 buildozer.log && exit 1)
         
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
